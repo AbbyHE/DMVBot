@@ -30,7 +30,6 @@ app.get('/', function(req, res) {
  *
  */
 app.get('/webhook', function(req, res) {
-  console.log(VALIDATION_TOKEN);
   if (req.query['hub.mode'] === 'subscribe' &&
       req.query['hub.verify_token'] === VALIDATION_TOKEN) {
     res.status(200).send(req.query['hub.challenge']);
@@ -38,6 +37,54 @@ app.get('/webhook', function(req, res) {
     res.sendStatus(403);
   }
 });
+
+/*
+ * Listen to webhook events
+ *
+ */
+app.post('/webhook', function(req, res) {
+  var data = req.body;
+
+  if (data.object == 'page') {
+    data.entry.forEach(function(pageEntry) {
+      pageEntry.messaging.forEach(function(event) {
+        if (event.message) {
+          var senderID = event.sender.id;
+          var messageData = {
+            recipient: {
+              id: senderID
+            },
+            message: {
+              text: 'hualala',
+              metadata: 'DEVELOPER_DEFINED_METADATA'
+            }
+          };
+          callSendAPI(messageData);
+        } else {
+          console.log('Received unsupported messagingEvent: ', messagingEvent);
+        }
+      });
+    });
+    res.sendStatus(200);
+  }
+});
+
+/*
+ * Call Messenger send API
+ *
+ */
+function callSendAPI(messageData) {
+  request({
+    uri: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: { access_token: PAGE_ACCESS_TOKEN },
+    method: 'POST',
+    json: messageData
+  }, function(error, res, body) {
+    if (error) {
+      console.error(res.error);
+    }
+  });
+}
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
