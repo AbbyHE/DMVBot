@@ -1,10 +1,12 @@
-var express = require('express');
+const express = require('express');
+const config = require('config');
+
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function(req, res) {
-  res.send('Hello world');
+  res.sendFile(__dirname + '/assets/coffee_cat.jpg');
 });
 
 app.get('/webhook', function(req, res) {
