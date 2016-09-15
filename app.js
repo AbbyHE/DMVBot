@@ -11,7 +11,7 @@ app.get('/', function(req, res) {
 
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === 'dmvbot') {
+      req.query['hub.verify_token'] === config.get('validationToken')) {
     res.status(200).send(req.query['hub.challenge']);
   } else {
     res.sendStatus(403);
