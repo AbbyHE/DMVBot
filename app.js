@@ -1,6 +1,8 @@
-const bodyParser = require('body-parser');
-const config = require('config');
-const express = require('express');
+const
+  bodyParser = require('body-parser'),
+  config = require('config'),
+  express = require('express'),
+  request = require('request');
 
 var app = express();
 
