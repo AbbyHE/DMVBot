@@ -4,7 +4,9 @@ const
   express = require('express'),
   request = require('request');
 
-var app = express();
+var
+  app = express(),
+  questionBank = require('./question_bank.js');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -55,26 +57,17 @@ app.get('/webhook', function(req, res) {
 app.post('/webhook', function(req, res) {
   var data = req.body;
 
-  if (data.object == 'page') {
+  if (data.object === 'page') {
     data.entry.forEach(function(pageEntry) {
       pageEntry.messaging.forEach(function(event) {
         if (event.message) {
-          var senderID = event.sender.id;
-          var messageData = {
-            recipient: {
-              id: senderID
-            },
-            message: {
-              text: 'hualala',
-              metadata: 'DEVELOPER_DEFINED_METADATA'
-            }
-          };
-          callSendAPI(messageData);
+          receivedMessage(event);
         } else {
-          console.log('Received unsupported messagingEvent: ', messagingEvent);
+          console.log("Received unsupported messagingEvent: ", event);
         }
       });
     });
+
     res.sendStatus(200);
   }
 });
