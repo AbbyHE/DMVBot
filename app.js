@@ -55,7 +55,7 @@ app.get('/webhook', function(req, res) {
  */
 app.post('/webhook', function(req, res) {
   var data = req.body;
-
+  console.log(data);
   if (data.object === 'page') {
     data.entry.forEach(function(pageEntry) {
       pageEntry.messaging.forEach(function(event) {
@@ -75,6 +75,7 @@ app.post('/webhook', function(req, res) {
  *
  */
 function receivedMessage(event) {
+  console.log(event);
   var senderID = event.sender.id;
   var message = event.message;
   var quickReply = message.quick_reply;
@@ -84,8 +85,10 @@ function receivedMessage(event) {
   }
 
   if (quickReply) {
+    console.log("quick reply response");
     sendTextMessage(senderID, "Quick reply tapped");
   } else {
+    console.log("other response");
     // By default, always send a question.
     var question = questionBank.getRandomQuestion();
     sendQuestion(senderID, question);
@@ -148,6 +151,7 @@ function sendQuestion(recipientId, question) {
  *
  */
 function callSendAPI(messageData) {
+  console.log("sending...");
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { access_token: PAGE_ACCESS_TOKEN },
