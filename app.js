@@ -105,7 +105,8 @@ function sendTextMessage(recipientId, messageText) {
       id: recipientId
     },
     message: {
-      text: messageText
+      text: messageText,
+      metadata: 'DEVELOPER_DEFINED_METADATA'
     }
   };
 
@@ -123,6 +124,7 @@ function sendQuestion(recipientId, question) {
     },
     message: {
       text: question['question_text'],
+      metadata: 'DEVELOPER_DEFINED_METADATA',
       quick_replies: [
         {
           'content_type': '[A] ' + question['options'][0],
