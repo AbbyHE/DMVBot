@@ -11,7 +11,6 @@ var
 app.set('port', (process.env.PORT || 5000));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 /*
  * Some constants
@@ -63,14 +62,86 @@ app.post('/webhook', function(req, res) {
         if (event.message) {
           receivedMessage(event);
         } else {
-          console.log("Received unsupported messagingEvent: ", event);
+          console.log("Received unsupported event: ", event);
         }
       });
     });
-
     res.sendStatus(200);
   }
 });
+
+/*
+ * Handle received messages
+ *
+ */
+function receivedMessage(event) {
+  var senderID = event.sender.id;
+  var message = event.message;
+  var quickReply = message.quick_reply;
+
+  if (message.is_echo) {
+    return;
+  }
+
+  if (quickReply) {
+    sendTextMessage(senderID, "Quick reply tapped");
+  } else {
+    // By default, always send a question.
+    var question = questionBank.getRandomQuestion();
+    sendQuestion(senderID, question);
+  }
+}
+
+/*
+ * Send a text message.
+ *
+ */
+function sendTextMessage(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: messageText
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+/*
+ * Send a question with Quick Reply buttons.
+ *
+ */
+function sendQuestion(recipientId, question) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: question['question_text'],
+      quick_replies: [
+        {
+          'content_type': '[A] ' + question['options'][0],
+          'title': "A",
+          'payload': '0',
+        },
+        {
+          'content_type': '[B] ' + question['options'][1],
+          'title': 'B',
+          'payload': '1'
+        },
+        {
+          'content_type': '[C] ' + question['options'][2],
+          'title': 'C',
+          'payload': '2'
+        }
+      ]
+    }
+  };
+
+  callSendAPI(messageData);
+}
 
 /*
  * Call Messenger send API

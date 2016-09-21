@@ -1,6 +1,3 @@
-
-var QuestionBank = function () {};
-
 var db = [
   {
     question_text: 'You may drive off of the paved roadway to pass another vehicle:',
@@ -57,5 +54,11 @@ var db = [
     ]
   }
 ];
+
+var QuestionBank = function () {};
+
+QuestionBank.prototype.getRandomQuestion = function() {
+  return db[0];
+};
 
 module.exports = new QuestionBank();
