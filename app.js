@@ -84,15 +84,17 @@ function receivedMessage(event) {
     return;
   }
 
-  if (quickReply) {
+  // if (quickReply) {
     console.log("quick reply response");
     sendTextMessage(senderID, "Quick reply tapped");
-  } else {
-    console.log("other response");
-    // By default, always send a question.
+  // } else {
+  //   console.log("other response");
+  //   // By default, always send a question.
     var question = questionBank.getRandomQuestion();
-    sendQuestion(senderID, question);
-  }
+    console.slog('question');
+    console.slog(question);
+  //   sendQuestion(senderID, question);
+  // }
 }
 
 /*
