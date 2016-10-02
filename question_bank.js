@@ -66,7 +66,7 @@ QuestionBank.prototype.getRandomQuestion = function() {
 };
 
 QuestionBank.prototype.getQuestion = function(idx) {
-  return question: db[idx]
+  return db[idx];
 };
 
 module.exports = new QuestionBank();
