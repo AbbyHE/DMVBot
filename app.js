@@ -113,17 +113,22 @@ function sendQuestion(recipientId, question) {
       id: recipientId
     },
     message: {
-      text:"text",
-      quick_replies:[
+      text: JSON.stringify(question['question_text']),
+      quick_replies: [
         {
-          "content_type":"text",
-          "title":"Red",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+          "content_type": JSON.stringify("[A] " + question['options'][0]),
+          "title": "A",
+          "payload": "0"
         },
         {
-          "content_type":"text",
-          "title":"Green",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+          "content_type": JSON.stringify("[B] " + question['options'][1]),
+          "title": "B",
+          "payload": "1"
+        },
+        {
+          "content_type": JSON.stringify("[C] " + question['options'][2]),
+          "title": "C",
+          "payload": "2"
         }
       ]
     }
