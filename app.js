@@ -55,7 +55,6 @@ app.get('/webhook', function(req, res) {
  */
 app.post('/webhook', function(req, res) {
   var data = req.body;
-  console.log(data);
   if (data.object === 'page') {
     data.entry.forEach(function(pageEntry) {
       pageEntry.messaging.forEach(function(event) {
@@ -84,17 +83,8 @@ function receivedMessage(event) {
     return;
   }
 
-  // if (quickReply) {
-    console.log("quick reply response");
-    sendTextMessage(senderID, "Quick reply tapped");
-  // } else {
-  //   console.log("other response");
-  //   // By default, always send a question.
-    var question = questionBank.getRandomQuestion();
-    console.slog('question');
-    console.slog(question);
-  //   sendQuestion(senderID, question);
-  // }
+  var question = questionBank.getRandomQuestion();
+  sendQuestion(senderID, question);
 }
 
 /*
@@ -107,8 +97,7 @@ function sendTextMessage(recipientId, messageText) {
       id: recipientId
     },
     message: {
-      text: messageText,
-      metadata: 'DEVELOPER_DEFINED_METADATA'
+      text: messageText
     }
   };
 
@@ -126,12 +115,11 @@ function sendQuestion(recipientId, question) {
     },
     message: {
       text: question['question_text'],
-      metadata: 'DEVELOPER_DEFINED_METADATA',
       quick_replies: [
         {
           'content_type': '[A] ' + question['options'][0],
-          'title': "A",
-          'payload': '0',
+          'title': 'A',
+          'payload': '0'
         },
         {
           'content_type': '[B] ' + question['options'][1],
@@ -155,7 +143,6 @@ function sendQuestion(recipientId, question) {
  *
  */
 function callSendAPI(messageData) {
-  console.log("sending...");
   request({
     uri: 'https://graph.facebook.com/v2.7/me/messages',
     qs: { access_token: PAGE_ACCESS_TOKEN },
