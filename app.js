@@ -113,20 +113,20 @@ function sendQuestion(recipientId, question) {
       id: recipientId
     },
     message: {
-      text: JSON.stringify(question['question_text']),
+      text: question['question_text'],
       quick_replies: [
         {
-          "content_type": JSON.stringify("[A] " + question['options'][0]),
-          "title": "A",
+          "content_type": "[A] " + question['options'][0],
+          "title": 'A',
           "payload": "0"
         },
         {
-          "content_type": JSON.stringify("[B] " + question['options'][1]),
+          "content_type": "[B] " + question['options'][1],
           "title": "B",
           "payload": "1"
         },
         {
-          "content_type": JSON.stringify("[C] " + question['options'][2]),
+          "content_type": "[C] " + question['options'][2],
           "title": "C",
           "payload": "2"
         }
