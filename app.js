@@ -96,10 +96,10 @@ function receivedMessage(event) {
         sendRetryOrNextQuestion(senderID, command[0]);
       }
     }
+  } else {
+    // By default, ask user a question
+    sendQuestion(senderID);
   }
-
-  // By default, ask user a question
-  sendQuestion(senderID);
 }
 
 /*
@@ -202,26 +202,6 @@ function sendRetryOrNextQuestion(recipientId, idx) {
           content_type: 'text',
           title: 'Retry',
           payload: 'retry' + ' ' + idx
-        }
-      ]
-    }
-  };
-
-  callSendAPI(messageData);
-}
-
-function sendNextStep(recipientId) {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      text: 'Woah, you got it right!',
-      quick_replies: [
-        {
-          content_type: 'text',
-          title: 'Next Question',
-          payload: 'next'
         }
       ]
     }
