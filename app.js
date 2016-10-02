@@ -113,22 +113,17 @@ function sendQuestion(recipientId, question) {
       id: recipientId
     },
     message: {
-      text: question['question_text'],
-      quick_replies: [
+      text:"text",
+      quick_replies:[
         {
-          "content_type": "[A] " + question['options'][0],
-          "title": 'A',
-          "payload": "0"
+          "content_type":"text",
+          "title":"Red",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
         },
         {
-          "content_type": "[B] " + question['options'][1],
-          "title": "B",
-          "payload": "1"
-        },
-        {
-          "content_type": "[C] " + question['options'][2],
-          "title": "C",
-          "payload": "2"
+          "content_type":"text",
+          "title":"Green",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
         }
       ]
     }
