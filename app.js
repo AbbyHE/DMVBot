@@ -87,10 +87,10 @@ function receivedMessage(event) {
     if (command[0] === 'next') {
       sendQuestion(senderID);
     } else if (command[0] === 'retry') {
-      sendQuestion(senderID, command[1]);
+      sendQuestion(senderID, parseInt(command[1]));
     } else {
-      var question = questionBank.getQuestion(command[0]);
-      if (question.answer_key === command[1]) {
+      var question = questionBank.getQuestion(parseInt(command[0]));
+      if (question.answer_key == command[1]) {
         sendNextQuestion(senderID);
       } else {
         sendRetryOrNextQuestion(senderID, command[0]);
