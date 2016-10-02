@@ -108,12 +108,16 @@ function sendTextMessage(recipientId, messageText) {
  *
  */
 function sendQuestion(recipientId, question) {
+  var text = question.question_text
+    + '\n[A] ' + question.options[0]
+    + '\n[B] ' + question.options[1]
+    + '\n[C] ' + question.options[2];
   var messageData = {
     recipient: {
       id: recipientId
     },
     message: {
-      text: question.question_text,
+      text: text,
       quick_replies: [
         {
           content_type: 'text',
