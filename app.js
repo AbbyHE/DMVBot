@@ -61,7 +61,7 @@ app.post('/webhook', function(req, res) {
         if (event.message) {
           receivedMessage(event);
         } else {
-          console.log("Received unsupported event: ", event);
+          console.log('Received unsupported event: ', event);
         }
       });
     });
@@ -74,7 +74,6 @@ app.post('/webhook', function(req, res) {
  *
  */
 function receivedMessage(event) {
-  console.log(event);
   var senderID = event.sender.id;
   var message = event.message;
   var quickReply = message.quick_reply;
@@ -134,7 +133,7 @@ function sendQuestion(recipientId, question) {
       ]
     }
   };
-
+  console.log(messageData);
   callSendAPI(messageData);
 }
 
