@@ -76,14 +76,30 @@ app.post('/webhook', function(req, res) {
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var message = event.message;
-  var quickReply = message.quick_reply;
 
   if (message.is_echo) {
     return;
   }
 
-  var question = questionBank.getRandomQuestion();
-  sendQuestion(senderID, question);
+  if (message.quick_reply) {
+    var payload = message.quick_reply.payload;
+    var command = payload.split(' ');
+    if (command[0] === 'next') {
+      sendQuestion(senderID);
+    } else if (command[0] === 'retry') {
+      sendQuestion(senderID, command[1]);
+    } else {
+      var question = questionBank.getQuestion(command[0]);
+      if (question.answer_key === command[1]) {
+        sendNextQuestion(senderID);
+      } else {
+        sendRetryOrNextQuestion(senderID, command[0]);
+      }
+    }
+  }
+
+  // By default, ask user a question
+  sendQuestion(senderID);
 }
 
 /*
@@ -107,7 +123,15 @@ function sendTextMessage(recipientId, messageText) {
  * Send a question with Quick Reply buttons.
  *
  */
-function sendQuestion(recipientId, question) {
+function sendQuestion(recipientId, idx) {
+  var question;
+  if (idx === undefined) {
+    var result = questionBank.getRandomQuestion();
+    question = result.question;
+    idx = result.idx;
+  } else {
+    question = questionBank.getQuestion(idx);
+  }
   var text = question.question_text
     + '\n[A] ' + question.options[0]
     + '\n[B] ' + question.options[1]
@@ -122,17 +146,82 @@ function sendQuestion(recipientId, question) {
         {
           content_type: 'text',
           title: 'A',
-          payload: '0'
+          payload: idx + ' 0'
         },
         {
           content_type: 'text',
           title: 'B',
-          payload: '1'
+          payload: idx + ' 1'
         },
         {
           content_type: 'text',
           title: 'C',
-          payload: '2'
+          payload: idx + ' 2'
+        }
+      ]
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+function sendNextQuestion(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: 'Woah, you got it right!',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'Next Question',
+          payload: 'next'
+        }
+      ]
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+function sendRetryOrNextQuestion(recipientId, idx) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: 'Oops, wrong answer.',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'Next Question',
+          payload: 'next'
+        },
+        {
+          content_type: 'text',
+          title: 'Retry',
+          payload: 'retry' + ' ' + idx
+        }
+      ]
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+function sendNextStep(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: 'Woah, you got it right!',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'Next Question',
+          payload: 'next'
         }
       ]
     }
