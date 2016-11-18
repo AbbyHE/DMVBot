@@ -85,6 +85,7 @@ function receivedMessage(event) {
 
   if (message.quick_reply) {
     var payload = message.quick_reply.payload;
+    sendTextMessage(senderID, payload);
     var command = payload.split(' ');
     if (command[0] === 'next') {
       sendQuestion(senderID);
