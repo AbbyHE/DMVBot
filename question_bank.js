@@ -309,8 +309,8 @@ var db = [
     question_text: 'A large truck is ahead of you and is turning right onto a street with two lanes in each direction. The truck:',
     answer_key: 0,
     options: [
-      'May complete its turn in either of the two lanes.'
-      'May have to swing wide to complete the right turn.'
+      'May complete its turn in either of the two lanes.',
+      'May have to swing wide to complete the right turn.',
       'Must stay in the right lane at all times while turning.'
     ]
   },
@@ -533,9 +533,7 @@ var db = [
   }
 ];
 
-var QuestionBank = function () {};
-
-QuestionBank.prototype.getRandomQuestion = function() {
+function getRandomQuestion() {
   var idx = Math.floor(db.length * Math.random());
   return {
     idx: idx,
@@ -543,8 +541,8 @@ QuestionBank.prototype.getRandomQuestion = function() {
   };
 };
 
-QuestionBank.prototype.getQuestion = function(idx) {
+function getQuestion(idx) {
   return db[idx];
 };
 
-module.exports = new QuestionBank();
+module.exports = {getRandomQuestion, getQuestion};
