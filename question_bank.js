@@ -427,7 +427,7 @@ var db = [
     options: ["During rush hour traffic if there are no bicyclists in the bike lane.", "When you are within 200 feet of a cross street where you plan to turn right.", "When you want to pass a driver ahead of you who is turning right."]
   },
   {
-    question_text: "You see a flashing yellow traffic signal at an upc…ng intersection. The flashing yellow light means:",
+    question_text: "You see a flashing yellow traffic signal at an upcoming intersection. The flashing yellow light means:",
     answer_key: 2,
     options: ["Stop before entering the intersection as long as you can do so safely.", "Stop. Yield to all cross traffic before crossing the intersection.", "Slow down and cross the intersection carefully."]
   },
