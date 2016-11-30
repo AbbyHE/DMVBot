@@ -220,7 +220,7 @@ var db = [
     answer_key: 0,
     options: [
       'Use hands-free devices so you can keep both hands on the steering wheel.',
-      'Keep your phone within easy reach so you won't need to take your eyes off the road.',
+      'Keep your phone within easy reach so you won\'t need to take your eyes off the road.',
       'Review the number before answering a call.'
     ]
   },
@@ -244,7 +244,7 @@ var db = [
   },
   {
     question_text: 'You must obey instructions from school crossing guards:',
-    answer_key: 2,
+    answer_key: 0,
     options: [
       'At all times.',
       'Only during school hours.',
