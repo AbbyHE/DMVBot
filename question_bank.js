@@ -250,6 +250,286 @@ var db = [
       'Only during school hours.',
       'Unless you do not see any children present.'
     ]
+  },
+  {
+    question_text: 'It is a very windy day. You are driving and a dust storm blows across the freeway reducing your visibility. You should drive slower and turn on your:',
+    answer_key: 2,
+    options: [
+      'Interior lights.',
+      'Parking lights.',
+      'Headlights.'
+    ]
+  },
+  {
+    question_text: 'If you plan to pass another vehicle, you should:',
+    answer_key: 0,
+    options: [
+      'Not assume the other driver will make space for you to return to your lane.',
+      'Assume the other driver will let you pass if you use your turn signal.',
+      'Assume the other driver will maintain a constant speed.'
+    ]
+  },
+  {
+    question_text: 'You are driving on a freeway posted for 65 mph. Most of the other vehicles are driving 70 mph or faster. You may legally drive:',
+    answer_key: 0,
+    options: [
+      '70 mph or faster to keep up with the speed of traffic.',
+      'Between 65 mph and 70 mph.',
+      'No faster than 65 mph.'
+    ]
+  },
+  {
+    question_text: 'If you drive faster than other vehicles on a road with one lane in each direction and continually pass the other cars, you will:',
+    answer_key: 1,
+    options: [
+      'Get you to your destination much faster and safer.',
+      'Increase your chances of an accident.',
+      'Help prevent traffic congestion.'
+    ]
+  },
+  {
+    question_text: 'Which of these vehicles must always stop before crossing railroad tracks?',
+    answer_key: 0,
+    options: [
+      'Tank trucks marked with hazardous materials placards.',
+      'Motor homes or pickup trucks towing a boat trailer.',
+      'Any vehicle with 3 or more axles or weighing more than 4,000 pounds.'
+    ]
+  },
+  {
+    question_text: 'You are driving on a one-way street. You may turn left onto another one-way street only if:',
+    answer_key: 2,
+    options: [
+      'A sign permits the turn.',
+      'Traffic on the street moves to the right.',
+      'Traffic on the street moves to the left.'
+    ]
+  },
+  {
+    question_text: 'A large truck is ahead of you and is turning right onto a street with two lanes in each direction. The truck:',
+    answer_key: 0,
+    options: [
+      'May complete its turn in either of the two lanes.'
+      'May have to swing wide to complete the right turn.'
+      'Must stay in the right lane at all times while turning.'
+    ]
+  },
+  {
+    question_text: 'You must obey instructions from school crossing guards:',
+    answer_key: 0,
+    options: [
+      'At all times.',
+      'Only during school hours.',
+      'Unless you do not see any children present.'
+    ]
+  },
+  {
+    question_text: 'You must obey instructions from school crossing guards:',
+    answer_key: 0,
+    options: [
+      'At all times.',
+      'Only during school hours.',
+      'Unless you do not see any children present.'
+    ]
+  },
+  {
+    question_text: 'You must obey instructions from school crossing guards:',
+    answer_key: 0,
+    options: [
+      'At all times.',
+      'Only during school hours.',
+      'Unless you do not see any children present.'
+    ]
+  },
+  {
+    question_text: "It is a very windy day. You are driving and a dust storm blows across the freeway reducing your visibility. You should drive slower and turn on your:",
+    answer_key: 2,
+    options: ["Interior lights.", "Parking lights.", "Headlights."]
+  },
+  {
+    question_text: "If you plan to pass another vehicle, you should:",
+    answer_key: 0,
+    options: ["Not assume the other driver will make space for you to return to your lane.", "Assume the other driver will let you pass if you use your turn signal.", "Assume the other driver will maintain a constant speed."]
+  },
+  {
+    question_text: "You are driving on a freeway posted for 65 mph. Most of the other vehicles are driving 70 mph or faster. You may legally drive:",
+    answer_key: 2,
+    options: ["70 mph or faster to keep up with the speed of traffic.", "Between 65 mph and 70 mph.", "No faster than 65 mph."]
+  },
+  {
+    question_text: "If you drive faster than other vehicles on a road with one lane in each direction and continually pass the other cars, you will:",
+    answer_key: 1,
+    options: ["Get you to your destination much faster and safer.", "Increase your chances of an accident.", "Help prevent traffic congestion."]
+  },
+  {
+    question_text: "Which of these vehicles must always stop before crossing railroad tracks?",
+    answer_key: 0,
+    options: ["Tank trucks marked with hazardous materials placards.", "Motor homes or pickup trucks towing a boat trailer.", "Any vehicle with 3 or more axles or weighing more than 4,000 pounds."]
+  },
+  {
+    question_text: "You are driving on a one-way street. You may turn left onto another one-way street only if:",
+    answer_key: 2,
+    options: ["A sign permits the turn.", "Traffic on the street moves to the right.", "Traffic on the street moves to the left."]
+  },
+  {
+    question_text: "A large truck is ahead of you and is turning right onto a street with two lanes in each direction. The truck:",
+    answer_key: 1,
+    options: ["May complete its turn in either of the two lanes.", "May have to swing wide to complete the right turn.", "Must stay in the right lane at all times while turning."]
+  },
+  {
+    question_text: "You may cross a double yellow line to pass another vehicle, if the yellow line next to:",
+    answer_key: 1,
+    options: ["The other side of the road is a solid line.", "Your side of the road is a broken line.", "The other side of the road is a broken line."]
+  },
+  {
+    question_text: "At intersections, crosswalks, and railroad crossings, you should always:",
+    answer_key: 1,
+    options: ["Stop, listen, and proceed cautiously.", "Look to the sides of your vehicle to see what is coming.", "Slowly pass vehicles that seem to be stopped for no reason."]
+  },
+  {
+    question_text: "You drive defensively when you:",
+    answer_key: 2,
+    options: ["Always put one car length between you and the car ahead.", "Look only at the car in front of you while driving.", "Keep your eyes moving to look for possible hazards."]
+  },
+  {
+    question_text: "You are driving on the freeway. The vehicle in front of you is a large truck. You should drive:",
+    answer_key: 1,
+    options: ["Closely behind the truck in bad weather because the driver can see farther ahead.", "Farther behind the truck than you would for a passenger vehicle.", "No more than one car length behind the truck so the driver can see you."]
+  },
+  {
+    question_text: "All of the following practices are dangerous to do while driving. Which of these is also illegal?",
+    answer_key: 0,
+    options: ["Listening to music through headphones that cover both ears.", "Adjusting your outside mirrors.", "Transporting an unrestrained animal inside the vehicle."]
+  },
+  {
+    question_text: "Always stop before you cross railroad tracks when:",
+    answer_key: 0,
+    options: ["You don't have room on the other side to completely cross the tracks.", "The railroad crossing is located in a city or town that has frequent train traffic.", "You transport two or more young children in a passenger vehicle."]
+  },
+  {
+    question_text: "When you tailgate other drivers (drive close to their rear bumper):",
+    answer_key: 0,
+    options: ["You can frustrate the other drivers and make them angry.", "Your actions cannot result in a traffic citation.", "You help reduce traffic congestion."]
+  },
+  {
+    question_text: "Should you always drive slower than other traffic?",
+    answer_key: 0,
+    options: ["No, you can block traffic when you drive too slowly.", "Yes, it is a good defensive driving technique.", "Yes, it is always safer than driving faster than other traffic."]
+  },
+  {
+    question_text: "You see a signal person at a road construction site ahead. You should obey his or her instructions:",
+    answer_key: 2,
+    options: ["Only if you see orange cones on the road ahead.", "Unless they conflict with existing signs, signals, or laws.", "At all times."]
+  },
+  {
+    question_text: "When can you drive in a bike lane?",
+    answer_key: 1,
+    options: ["During rush hour traffic if there are no bicyclists in the bike lane.", "When you are within 200 feet of a cross street where you plan to turn right.", "When you want to pass a driver ahead of you who is turning right."]
+  },
+  {
+    question_text: "You see a flashing yellow traffic signal at an upc…ng intersection. The flashing yellow light means:",
+    answer_key: 2,
+    options: ["Stop before entering the intersection as long as you can do so safely.", "Stop. Yield to all cross traffic before crossing the intersection.", "Slow down and cross the intersection carefully."]
+  },
+  {
+    question_text: "There is no crosswalk and you see a pedestrian crossing your lane ahead. You should:",
+    answer_key: 2,
+    options: ["Make eye contact and then pass him/her.", "Slow down as you pass him/her.", "Stop and let him/her finish crossing the street."]
+  },
+  {
+    question_text: "A solid yellow line next to a broken yellow line means that vehicles:",
+    answer_key: 1,
+    options: ["In both directions may pass.", "Next to the broken line may pass.", "Next to the solid line may pass."]
+  },
+  {
+    question_text: "You are driving on the freeway. The vehicle in front of you is a large truck. You should drive:",
+    answer_key: 1,
+    options: [
+      "Closely behind the truck in bad weather because the driver can see farther ahead.",
+      "Farther behind the truck than you would for a passenger vehicle.",
+      "No more than one car length behind the truck so the driver can see you."
+    ]
+  },
+  {
+    question_text: "All of the following practices are dangerous to do while driving. Which of these is also illegal?",
+    answer_key: 0,
+    options: [
+      "Listening to music through headphones that cover both ears.",
+      "Adjusting your outside mirrors.",
+      "Transporting an unrestrained animal inside the vehicle."
+    ]
+  },
+  {
+    question_text: "Always stop before you cross railroad tracks when:",
+    answer_key: 0,
+    options: [
+      "You don't have room on the other side to completely cross the tracks.",
+      "The railroad crossing is located in a city or town that has frequent train traffic.",
+      "You transport two or more young children in a passenger vehicle."
+    ]
+  },
+  {
+    question_text: "When you tailgate other drivers (drive close to their rear bumper):",
+    answer_key: 0,
+    options: [
+      "You can frustrate the other drivers and make them angry.",
+      "Your actions cannot result in a traffic citation.",
+      "You help reduce traffic congestion."
+    ]
+  },
+  {
+    question_text: "Should you always drive slower than other traffic?",
+    answer_key: 0,
+    options: [
+      "No, you can block traffic when you drive too slowly.",
+      "Yes, it is a good defensive driving technique.",
+      "Yes, it is always safer than driving faster than other traffic."
+    ]
+  },
+  {
+    question_text: "You see a signal person at a road construction site ahead. You should obey his or her instructions:",
+    answer_key: 2,
+    options: [
+      "Only if you see orange cones on the road ahead.",
+      "Unless they conflict with existing signs, signals, or laws.",
+      "At all times."
+    ]
+  },
+  {
+    question_text: "When can you drive in a bike lane?",
+    answer_key: 1,
+    options: [
+      "During rush hour traffic if there are no bicyclists in the bike lane.",
+      "When you are within 200 feet of a cross street where you plan to turn right.",
+      "When you want to pass a driver ahead of you who is turning right."
+    ]
+  },
+  {
+    question_text: "You see a flashing yellow traffic signal at an upcoming intersection. The flashing yellow light means:",
+    answer_key: 2,
+    options: [
+      "Stop before entering the intersection as long as you can do so safely.",
+      "Stop. Yield to all cross traffic before crossing the intersection.",
+      "Slow down and cross the intersection carefully."
+    ]
+  },
+  {
+    question_text: "There is no crosswalk and you see a pedestrian crossing your lane ahead. You should:",
+    answer_key: 2,
+    options: [
+      "Make eye contact and then pass him/her.",
+      "Slow down as you pass him/her.",
+      "Stop and let him/her finish crossing the street."
+    ]
+  },
+  {
+    question_text: "A solid yellow line next to a broken yellow line means that vehicles:",
+    answer_key: 1,
+    options: [
+      "In both directions may pass.",
+      "Next to the broken line may pass.",
+      "Next to the solid line may pass."
+    ]
   }
 ];
 
