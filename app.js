@@ -60,7 +60,7 @@ app.post('/webhook', function(req, res) {
     data.entry.forEach(function(pageEntry) {
       pageEntry.messaging.forEach(function(event) {
         if (event.message) {
-          console.log(event);
+          console.log(JSON.stringify(event));
           receivedMessage(event);
         } else {
           console.log('Received unsupported event: ', event);
