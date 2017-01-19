@@ -112,7 +112,7 @@ function receivedMessage(event) {
 function receivedPostback(event) {
   var senderID = event.sender.id;
   var payload = event.postback.payload;
-  if (payload === 'next') {
+  if (payload === 'next' || payload === 'NEW_USER') {
     sendQuestion(senderID);
   }
 }
