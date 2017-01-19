@@ -60,6 +60,7 @@ app.post('/webhook', function(req, res) {
     data.entry.forEach(function(pageEntry) {
       pageEntry.messaging.forEach(function(event) {
         if (event.message) {
+          console.log(JSON.stringify(event));
           receivedMessage(event);
         } else {
           console.log('Received unsupported event: ', event);
@@ -75,7 +76,6 @@ app.post('/webhook', function(req, res) {
  *
  */
 function receivedMessage(event) {
-  console.log(event);
   var senderID = event.sender.id;
   var message = event.message;
 
@@ -85,7 +85,6 @@ function receivedMessage(event) {
 
   if (message.quick_reply) {
     var payload = message.quick_reply.payload;
-    sendTextMessage(senderID, payload);
     var command = payload.split(' ');
     if (command[0] === 'next') {
       sendQuestion(senderID);
