@@ -60,8 +60,9 @@ app.post('/webhook', function(req, res) {
     data.entry.forEach(function(pageEntry) {
       pageEntry.messaging.forEach(function(event) {
         if (event.message) {
-          console.log(JSON.stringify(event));
           receivedMessage(event);
+        } else if (event.postback) {
+          receivedPostback(event);
         } else {
           console.log('Received unsupported event: ', event);
         }
@@ -100,6 +101,18 @@ function receivedMessage(event) {
     }
   } else {
     // By default, ask user a question
+    sendQuestion(senderID);
+  }
+}
+
+/*
+ * Handle received postback
+ *
+ */
+function receivedPostback(event) {
+  var senderID = event.sender.id;
+  var payload = event.postback.payload;
+  if (payload === 'next') {
     sendQuestion(senderID);
   }
 }
