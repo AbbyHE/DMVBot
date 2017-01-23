@@ -59,7 +59,7 @@ app.post('/webhook', function(req, res) {
   if (data.object === 'page') {
     data.entry.forEach(function(pageEntry) {
       pageEntry.messaging.forEach(function(event) {
-        console.log(event.message);
+        console.log(event);
         if (event.message) {
           receivedMessage(event);
         } else if (event.postback) {
