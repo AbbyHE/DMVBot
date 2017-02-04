@@ -94,6 +94,9 @@ function receivedMessage(event) {
       sendQuestion(senderID, parseInt(command[1]));
     } else {
       var question = questionBank.getQuestion(parseInt(command[0]));
+      if (!question) {
+        sendQuestion(senderID);
+      }
       if (question.answer_key == command[1]) {
         sendNextQuestion(senderID);
       } else {
