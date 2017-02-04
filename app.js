@@ -92,17 +92,18 @@ function receivedMessage(event) {
       sendQuestion(senderID);
     } else if (command[0] === 'retry') {
       sendQuestion(senderID, parseInt(command[1]));
-    } else {
-      var question = questionBank.getQuestion(parseInt(command[0]));
-      if (!question) {
-        sendQuestion(senderID);
-      }
-      if (question.answer_key == command[1]) {
-        sendNextQuestion(senderID);
-      } else {
-        sendRetryOrNextQuestion(senderID, command[0]);
-      }
-    }
+    } 
+//     else {
+//       var question = questionBank.getQuestion(parseInt(command[0]));
+//       if (!question) {
+//         sendQuestion(senderID);
+//       }
+//       if (question.answer_key == command[1]) {
+//         sendNextQuestion(senderID);
+//       } else {
+//         sendRetryOrNextQuestion(senderID, command[0]);
+//       }
+//     }
   } else {
     // By default, ask user a question
     sendQuestion(senderID);
