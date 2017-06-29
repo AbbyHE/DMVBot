@@ -99,6 +99,8 @@ function receivedMessage(event) {
         sendRetryOrNextQuestion(senderID, command[0]);
       }
     }
+  } else if (message.text) {
+    sendExplanationAndNextQuestion(senderID);
   } else {
     // By default, ask user a question
     sendQuestion(senderID);
@@ -191,6 +193,26 @@ function sendNextQuestion(recipientId) {
         {
           content_type: 'text',
           title: 'Next Question',
+          payload: 'next'
+        }
+      ]
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+function sendExplanationAndNextQuestion(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: 'What do I know? I am just a dumb bot. But I can help prepare for your DMV written tests. Would you like a sample question?',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'Yes',
           payload: 'next'
         }
       ]
