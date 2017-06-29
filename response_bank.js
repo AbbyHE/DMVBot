@@ -17,26 +17,17 @@ const playDumbReplies = [
 
 function getRandomRightAnwserReply() {
   var idx = Math.floor(rightAnwserReplies.length * Math.random());
-  return {
-    idx: idx,
-    reply: rightAnwserReplies[idx]
-  };
+  return rightAnwserReplies[idx];
 };
 
 function getRandomWrongAnwserReply() {
   var idx = Math.floor(wrongAnwserReplies.length * Math.random());
-  return {
-    idx: idx,
-    reply: wrongAnwserReplies[idx]
-  };
+  return wrongAnwserReplies[idx];
 };
 
 function getRandomPlayDumbReply() {
   var idx = Math.floor(playDumbReplies.length * Math.random());
-  return {
-    idx: idx,
-    reply: playDumbReplies[idx]
-  };
+  return playDumbReplies[idx];
 };
 
 module.exports = {
