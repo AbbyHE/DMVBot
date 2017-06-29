@@ -7,7 +7,8 @@ const
 
 var
   app = express(),
-  questionBank = require('./question_bank.js');
+  questionBank = require('./question_bank.js'),
+  responseBank = require('./response_bank.js');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -55,7 +56,7 @@ app.get('/webhook', function(req, res) {
  *
  */
 app.post('/webhook', function(req, res) {
-  var data = req.body;
+  const data = req.body;
   if (data.object === 'page') {
     data.entry.forEach(function(pageEntry) {
       pageEntry.messaging.forEach(function(event) {
@@ -77,22 +78,22 @@ app.post('/webhook', function(req, res) {
  *
  */
 function receivedMessage(event) {
-  var senderID = event.sender.id;
-  var message = event.message;
+  const senderID = event.sender.id;
+  const message = event.message;
 
   if (message.is_echo) {
     return;
   }
 
   if (message.quick_reply) {
-    var payload = message.quick_reply.payload;
-    var command = payload.split(' ');
+    const payload = message.quick_reply.payload;
+    const command = payload.split(' ');
     if (command[0] === 'next') {
       sendQuestion(senderID);
     } else if (command[0] === 'retry') {
       sendQuestion(senderID, parseInt(command[1]));
     } else {
-      var question = questionBank.getQuestion(parseInt(command[0]));
+      const question = questionBank.getQuestion(parseInt(command[0]));
       if (question.answer_key == command[1]) {
         sendNextQuestion(senderID);
       } else {
@@ -112,8 +113,8 @@ function receivedMessage(event) {
  *
  */
 function receivedPostback(event) {
-  var senderID = event.sender.id;
-  var payload = event.postback.payload;
+  const senderID = event.sender.id;
+  const payload = event.postback.payload;
   if (payload === 'next' || payload === 'NEW_USER') {
     sendQuestion(senderID);
   }
@@ -124,7 +125,7 @@ function receivedPostback(event) {
  *
  */
 function sendTextMessage(recipientId, messageText) {
-  var messageData = {
+  const messageData = {
     recipient: {
       id: recipientId
     },
@@ -183,12 +184,13 @@ function sendQuestion(recipientId, idx) {
 }
 
 function sendNextQuestion(recipientId) {
-  var messageData = {
+  const text = responseBank.getRandomRightAnwserReply();
+  const messageData = {
     recipient: {
       id: recipientId
     },
     message: {
-      text: 'Woah, you got it right!',
+      text: text,
       quick_replies: [
         {
           content_type: 'text',
@@ -203,12 +205,13 @@ function sendNextQuestion(recipientId) {
 }
 
 function sendExplanationAndNextQuestion(recipientId) {
-  var messageData = {
+  const text = responseBank.getRandomPlayDumbReply();
+  const messageData = {
     recipient: {
       id: recipientId
     },
     message: {
-      text: 'What do I know? I am just a dumb bot. But I can help prepare for your DMV written tests. Would you like a sample question?',
+      text: text,
       quick_replies: [
         {
           content_type: 'text',
@@ -223,12 +226,13 @@ function sendExplanationAndNextQuestion(recipientId) {
 }
 
 function sendRetryOrNextQuestion(recipientId, idx) {
-  var messageData = {
+  const text = responseBank.getRandomWrongAnwserReply();
+  const messageData = {
     recipient: {
       id: recipientId
     },
     message: {
-      text: 'Oops, wrong answer.',
+      text: text,
       quick_replies: [
         {
           content_type: 'text',

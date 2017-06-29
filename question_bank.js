@@ -1,4 +1,4 @@
-var db = [
+const db = [
   {
     question_text: "You may drive off of the paved roadway to pass another vehicle:",
     answer_key: 2,
@@ -534,7 +534,7 @@ var db = [
 ];
 
 function getRandomQuestion() {
-  var idx = Math.floor(db.length * Math.random());
+  const idx = Math.floor(db.length * Math.random());
   return {
     idx: idx,
     question: db[idx]
