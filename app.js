@@ -80,9 +80,15 @@ app.post('/webhook', function(req, res) {
 function receivedMessage(event) {
   const senderID = event.sender.id;
   const message = event.message;
+  const referral = event.referral;
 
   if (message.is_echo) {
     return;
+  }
+
+  if (referral) {
+    console.log("referral");
+    console.log(referral.ref);
   }
 
   if (message.quick_reply) {
