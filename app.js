@@ -87,11 +87,6 @@ function receivedMessage(event) {
     return;
   }
 
-  if (referral) {
-    console.log("referral");
-    console.log(referral.ref);
-  }
-
   if (message.quick_reply) {
     const payload = message.quick_reply.payload;
     const command = payload.split(' ');
@@ -263,6 +258,7 @@ function sendRetryOrNextQuestion(recipientId, idx) {
  *
  */
 function callSendAPI(messageData) {
+  console.log('sending response');
   request({
     uri: 'https://graph.facebook.com/v2.7/me/messages',
     qs: { access_token: PAGE_ACCESS_TOKEN },
