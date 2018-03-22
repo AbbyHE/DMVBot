@@ -269,7 +269,6 @@ function callSendAPI(messageData) {
       console.error(res.error);
     } else {
       console.log(res);
-      console.log(body);
     }
   });
 }
