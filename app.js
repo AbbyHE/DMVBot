@@ -59,6 +59,7 @@ app.post('/webhook', function(req, res) {
   const data = req.body;
   if (data.object === 'page') {
     data.entry.forEach(function(pageEntry) {
+      console.log('one new message coming');
       pageEntry.messaging.forEach(function(event) {
         if (event.message) {
           receivedMessage(event);
